@@ -15,13 +15,7 @@ namespace PASIKARTOJIMAS
 
         public override int NameKodas(int num)
         {
-            int toNum = 0;
-
-            foreach (char letter in Name)
-            {
-                toNum += (int)letter - num;
-            }
-            return toNum;
+            throw new NotImplementedException();
         }
 
         public override string NameMetodas()
@@ -39,8 +33,6 @@ namespace PASIKARTOJIMAS
             return noVowels;
         }
 
-
-
         public string ZodisBePriebalsiu()
         {
             var noConsonants = "";
@@ -51,14 +43,41 @@ namespace PASIKARTOJIMAS
 
         public string ZodisSuPakeistomisBalsemis(char ch)
         {
-            var changeVowels = "";
-            changeVowels = string.Concat(Name.Select(c => Name.Contains(c) ? 'a' : c));
-            return changeVowels;
+            var changedVowels = "";
+
+            foreach (char vowel in Name)
+            {
+                if (vowel == 'a' || vowel == 'e' || vowel == 'i' || vowel == 'o' || vowel == 'u')
+                {
+                    changedVowels += ch;
+                }
+                else
+                {
+                    changedVowels += vowel;
+                }
+            }
+            return changedVowels;
         }
 
         public string ZodisSuPakeistomisPriebalsemis(int num)
         {
-            throw new NotImplementedException();
+             var changedConst = "";          
+
+            foreach (char constant in Name)
+            {
+                if (constant == 'b' || constant == 'c' || constant == 'd' || constant == 'f' || constant == 'g'|| constant == 'h' || 
+                    constant == 'j' || constant == 'k' || constant == 'l' || constant == 'm' || constant == 'n'|| constant == 'p' ||
+                    constant == 'q' || constant == 'r' || constant == 's' || constant == 't' || constant == 'v'|| constant == 'w' ||
+                    constant == 'x' || constant == 'y' || constant == 'z') 
+                {
+                    changedConst += num;
+                }
+                else
+                {
+                    changedConst += constant;
+                }
+            }
+            return changedConst;
         }
     }
 }
